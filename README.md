@@ -1,6 +1,9 @@
 # rev-3d
 A pipeline for converting 360° video into a 3D model.
 
+### Dependencies:
+- ffmpeg: `sudo apt install ffmpeg`
+
 ### High-level Architecture of the Approach
 ![arch](static/arch.excalidraw.png)
 
