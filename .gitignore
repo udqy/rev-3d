@@ -172,3 +172,4 @@ cython_debug/
 
 # Added for project management
 frames/
+*.mp4
