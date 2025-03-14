@@ -173,3 +173,8 @@ cython_debug/
 # Added for project management
 frames/
 *.mp4
+*.png
+*.jpg
+*.jpeg
+notebooks/*.pt
+models/
