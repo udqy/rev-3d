@@ -183,7 +183,7 @@ def evaluate_frame_quality(mask):
     
     return quality_score, metrics
 
-def extract_and_process_frames(video_path, output_dir, num_frames=60, quality_threshold=0.3, max_extra_frames=20):
+def extract_and_process_frames(video_path, output_dir, num_frames=90, quality_threshold=0.3, max_extra_frames=20):
     """
     Extract frames from video, process with SAM, and save results.
     Filter out poor quality frames.
@@ -357,19 +357,19 @@ def extract_and_process_frames(video_path, output_dir, num_frames=60, quality_th
         # Convert RGB to BGR for OpenCV
         processed_frame_bgr = cv2.cvtColor(processed_frame, cv2.COLOR_RGB2BGR)
         
-        # Save the processed frame
-        output_path = os.path.join(output_dir, f"img_{i+1}.jpg")
-        cv2.imwrite(output_path, processed_frame_bgr, [cv2.IMWRITE_JPEG_QUALITY, 95])
+        # Save the processed frame as PNG
+        output_path = os.path.join(output_dir, f"img_{i+1}.png")
+        cv2.imwrite(output_path, processed_frame_bgr, [cv2.IMWRITE_PNG_COMPRESSION, 3])  # Lower value = better quality
         
         print(f"Saved frame {i+1}/{len(good_frames)} (idx {frame_info['index']}) - Quality: {frame_info['quality_score']:.4f}")
-    
+
     # Release the video
     cap.release()
     print(f"Completed processing {len(good_frames)} frames")
     
     return len(good_frames)
 
-def preprocess_video(video_path, output_dir, num_frames=60):
+def preprocess_video(video_path, output_dir, num_frames=90):
     """
     Main preprocessing function to extract frames and remove backgrounds.
     
@@ -390,4 +390,4 @@ if __name__ == "__main__":
     # For testing when run directly
     video_path = "../data/NissanMurano/stable.mp4"
     output_dir = "../data/NissanMurano/colmap/images"
-    preprocess_video(video_path, output_dir)
+    preprocess_video(video_path, output_dir, 90)

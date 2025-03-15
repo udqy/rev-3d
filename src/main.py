@@ -35,7 +35,7 @@ def main():
     print("Video stabilization completed successfully")
     
     # Preprocess the stabilized video: extract frames and remove backgrounds
-    preprocess_success = preprocess_video(output_file, frames_output_dir, num_frames=60)
+    preprocess_success = preprocess_video(output_file, frames_output_dir, num_frames=90)
     if not preprocess_success:
         print("Preprocessing failed")
         return 1
