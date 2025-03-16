@@ -178,3 +178,4 @@ frames/
 *.jpeg
 notebooks/*.pt
 models/
+colmap/
